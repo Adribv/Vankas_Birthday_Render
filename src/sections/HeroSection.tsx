@@ -116,7 +116,7 @@ className="relative z-10 mt-12 w-80 md:w-96 lg:w-[28rem] h-60 md:h-72 lg:h-80 mx
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <video className="w-full h-full object-contain" controls poster="/placeholder.svg">
+          <video className="w-full h-full object-contain" controls poster="/favicon.ico">
             <source src="/v1.mp4" type="video/mp4" />
           </video>
         </motion.div>

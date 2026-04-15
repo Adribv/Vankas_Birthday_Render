@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PASSWORD } from "@/data/memories";
 import Windmill from "@/components/Windmill";
+import Confetti from "@/components/Confetti";
 
 interface Props {
   onUnlock: () => void;
@@ -11,10 +12,12 @@ export default function PasswordScreen({ onUnlock }: Props) {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [exiting, setExiting] = useState(false);
+  const [confettiTrigger, setConfettiTrigger] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (value === PASSWORD) {
+      setConfettiTrigger(true);
       setExiting(true);
       setTimeout(onUnlock, 1200);
     } else {
@@ -24,7 +27,9 @@ export default function PasswordScreen({ onUnlock }: Props) {
   };
 
   return (
-    <AnimatePresence>
+    <div>
+      <Confetti trigger={confettiTrigger} />
+      <AnimatePresence>
       {!exiting ? (
         <motion.div
           className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
@@ -139,6 +144,7 @@ export default function PasswordScreen({ onUnlock }: Props) {
           transition={{ duration: 1.2, ease: "easeInOut" }}
         />
       )}
-    </AnimatePresence>
+        </AnimatePresence>
+    </div>
   );
 }

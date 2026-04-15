@@ -10,6 +10,7 @@ import FinalMessage from "@/sections/FinalMessage";
 import FloatingParticles from "@/components/FloatingParticles";
 import ScrollProgress from "@/components/ScrollProgress";
 import MusicToggle from "@/components/MusicToggle";
+import VolumeControl from "@/components/VolumeControl";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -31,11 +32,14 @@ const Index = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
+          <MusicToggle />
+          <VolumeControl />
           <ScrollProgress />
           <FloatingParticles />
-          <MusicToggle />
+
 
           <HeroSection />
+
 
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background pointer-events-none" />
