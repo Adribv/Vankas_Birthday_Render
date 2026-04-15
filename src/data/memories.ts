@@ -13,7 +13,7 @@ export const memories = [
   },
   {
     title: "Into Corporate World",
-    description: "Entered Into the Big League.",
+    description: "Entered the Big League.",
     image: "/3.jpeg",
   },
   {
@@ -75,4 +75,4 @@ export const coffeePersonality = [
   { type: "Mocha", trait: "A little sweet, a lot of character", icon: "🍫" },
 ];
 
-export const finalMessage = "Flyyy Highh Girll Rock the world in simple terms Siragu Adii🔥🔥🚀. Happy Birthday, Vankaaaawww 💛🌻 Welcome to 21🌻";
+export const finalMessage ="Even the quietest dreams in you deserve the loudest sky 💛 Siragu Adi Molaee 💃💃💃and let yourself shine bright 🌙 Happy Birthday, Vankaww🌻 Welcome to 21🌻";

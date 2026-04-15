@@ -13,10 +13,11 @@ export default {
       },
     },
     extend: {
-      fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Poppins', 'sans-serif'],
-      },
+        fontFamily: {
+          display: ['"Reenie Beanie"', '"Dancing Script"', 'cursive'],
+          body: ['"Quicksand"', '"Comfortaa"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

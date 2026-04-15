@@ -6,14 +6,17 @@ import { motion } from 'framer-motion';
 
 
 export default function VolumeControl() {
-  const [volume, setVolume] = useState(0.15);
+  const [volume, setVolume] = useState(0.17);
   const [showSlider, setShowSlider] = useState(false);
 
   useEffect(() => {
-    const audio = document.querySelector('audio') as HTMLAudioElement;
-    if (audio) {
-      audio.volume = volume;
-    }
+    const interval = setInterval(() => {
+      const audio = (window as any).musicAudio as HTMLAudioElement;
+      if (audio) {
+        audio.volume = volume;
+      }
+    }, 100);
+    return () => clearInterval(interval);
   }, [volume]);
 
   return (
