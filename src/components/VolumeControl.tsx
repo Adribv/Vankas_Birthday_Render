@@ -1,26 +1,18 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Volume2, Volume1, VolumeX } from 'lucide-react';
-import { motion } from 'framer-motion';
-
-
+import { setMusicVolume } from './MusicToggle';
 
 export default function VolumeControl() {
-  const [volume, setVolume] = useState(0.17);
+  const [volume, setVolume] = useState(0.15);
   const [showSlider, setShowSlider] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const audio = (window as any).musicAudio as HTMLAudioElement | null;
-      if (audio) {
-        audio.volume = volume;
-      }
-    }, 100);
-    return () => clearInterval(interval);
+    setMusicVolume(volume);
   }, [volume]);
 
   return (
-    <div className="fixed top-4 right-4 z-50 flex items-center gap-1 bg-card/95 backdrop-blur-md rounded-lg p-2 shadow-xl border border-border/50">
+    <div className="fixed top-6 right-4 z-[100] flex items-center gap-1 bg-card/95 backdrop-blur-md rounded-lg p-2 shadow-xl border border-border/50">
       <motion.button
         className="p-1.5 rounded-md hover:bg-accent transition-colors"
         whileHover={{ scale: 1.05 }}
@@ -55,4 +47,6 @@ export default function VolumeControl() {
     </div>
   );
 }
+
+
 

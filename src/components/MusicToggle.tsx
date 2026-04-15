@@ -1,34 +1,61 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
+import { Howl } from "howler";
+
+let soundInstance: Howl | null = null;
 
 export default function MusicToggle() {
-  const [playing, setPlaying] = useState(true);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
-  audioRef.current = new Audio("/a.mp3");
-(window as any).musicAudio = audioRef.current!; // Share for volume control
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.15;
-    audioRef.current.play().catch(e => console.log('Autoplay failed:', e));
-    return () => { audioRef.current?.pause(); };
+  const createSound = useCallback(() => {
+    if (soundInstance) {
+      soundInstance.unload();
+    }
+    soundInstance = new Howl({
+      src: ['/a.mp3'],
+      loop: true,
+      volume: 0.15,
+      html5: true,
+      preload: true
+    });
+    soundInstance.play();
+    setPlaying(true);
+    return soundInstance;
   }, []);
 
-  const toggle = () => {
-    if (!audioRef.current) return;
-    if (playing) { 
-      audioRef.current.pause(); 
-    } else { 
-      audioRef.current.volume = 0.15; // Low volume
-      audioRef.current.play().catch(() => {}); 
+  useEffect(() => {
+    createSound();
+
+    const handleVisibilityChange = () => {
+      if (document.hidden && playing && soundInstance) {
+        soundInstance.pause();
+        setPlaying(false);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      soundInstance?.unload();
+      soundInstance = null;
+    };
+  }, [createSound]);
+
+  const toggle = useCallback(() => {
+    if (soundInstance) {
+      if (playing) {
+        soundInstance.pause();
+      } else {
+        soundInstance.play();
+      }
+      setPlaying(!playing);
     }
-    setPlaying(!playing);
-  };
+  }, [playing]);
 
   return (
     <motion.button
       onClick={toggle}
-className="fixed top-20 right-4 z-50 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-lg shadow-lg"
+      className="fixed top-4 right-4 z-[100] w-10 h-10 rounded-full glass-strong flex items-center justify-center text-lg shadow-lg hover:scale-110 active:scale-90 transition-all"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       aria-label="Toggle music"
@@ -37,3 +64,11 @@ className="fixed top-20 right-4 z-50 w-10 h-10 rounded-full glass-strong flex it
     </motion.button>
   );
 }
+
+// Global volume setter for other components
+export const setMusicVolume = (vol: number) => {
+  if (soundInstance) {
+    soundInstance.volume(vol);
+  }
+};
+
