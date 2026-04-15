@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 82 30% 12%;
+    --foreground: 45 60% 90%;
+
+    --card: 82 25% 16%;
+    --card-foreground: 45 60% 90%;
+
+    --popover: 82 25% 14%;
+    --popover-foreground: 45 60% 90%;
+
+    --primary: 82 45% 20%;
+    --primary-foreground: 45 80% 92%;
+
+    --secondary: 45 85% 55%;
+    --secondary-foreground: 82 40% 10%;
+
+    --muted: 82 20% 20%;
+    --muted-foreground: 45 30% 65%;
+
+    --accent: 25 50% 30%;
+    --accent-foreground: 45 60% 90%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 82 20% 22%;
+    --input: 82 20% 22%;
+    --ring: 45 85% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --olive: 82 45% 20%;
+    --olive-light: 82 30% 35%;
+    --olive-dark: 82 50% 10%;
+    --olive-mid: 82 35% 26%;
+    --sunflower: 45 90% 55%;
+    --sunflower-light: 45 90% 70%;
+    --sunflower-dark: 40 80% 42%;
+    --coffee: 25 50% 30%;
+    --coffee-light: 25 35% 50%;
+    --coffee-cream: 35 40% 80%;
+    --warm-bg: 82 30% 12%;
+    --warm-bg-alt: 82 25% 16%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(82 35% 14%), hsl(82 30% 18%), hsl(40 20% 14%));
+    --gradient-sunflower: linear-gradient(135deg, hsl(45 90% 55%), hsl(40 80% 42%));
+    --gradient-olive: linear-gradient(135deg, hsl(82 45% 20%), hsl(82 30% 35%));
+    --gradient-coffee: linear-gradient(135deg, hsl(25 50% 30%), hsl(25 35% 50%));
+    --gradient-section: linear-gradient(180deg, hsl(82 30% 12%), hsl(82 25% 16%), hsl(82 30% 12%));
+
+    --shadow-soft: 0 4px 20px hsl(82 35% 10% / 0.4);
+    --shadow-warm: 0 8px 32px hsl(25 50% 15% / 0.3);
+    --shadow-glow: 0 0 30px hsl(45 90% 55% / 0.25);
+    --shadow-olive: 0 4px 24px hsl(82 40% 8% / 0.5);
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+
+    --sidebar-background: 82 30% 12%;
+    --sidebar-foreground: 45 60% 90%;
+    --sidebar-primary: 82 45% 20%;
+    --sidebar-primary-foreground: 45 80% 92%;
+    --sidebar-accent: 82 25% 18%;
+    --sidebar-accent-foreground: 45 60% 90%;
+    --sidebar-border: 82 20% 22%;
+    --sidebar-ring: 45 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+    box-shadow: var(--shadow-olive);
+  }
+
+  .glass-strong {
+    @apply bg-card/80 backdrop-blur-2xl border border-border/60;
+    box-shadow: var(--shadow-warm);
+  }
+
+  .text-gradient-sunflower {
+    background: var(--gradient-sunflower);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-olive {
+    background: var(--gradient-olive);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-sunflower {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .section-gradient {
+    background: var(--gradient-section);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(82 30% 10%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(82 30% 25%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(45 90% 55%);
+}
+
+/* Custom cursor */
+body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4' fill='%23708238' opacity='0.6'/%3E%3C/svg%3E") 12 12, auto;
+}
+
+a, button, [role="button"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='6' fill='%23DAA520' opacity='0.7'/%3E%3C/svg%3E") 14 14, pointer;
+}
