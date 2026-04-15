@@ -32,14 +32,12 @@ const Index = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <MusicToggle />
-          <VolumeControl />
           <ScrollProgress />
           <FloatingParticles />
-
+          <MusicToggle />
+          <VolumeControl />
 
           <HeroSection />
-
 
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background pointer-events-none" />

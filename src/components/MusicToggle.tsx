@@ -24,20 +24,12 @@ export default function MusicToggle() {
   }, []);
 
   useEffect(() => {
-    createSound();
+    const timeout = setTimeout(() => {
+      createSound();
+    }, 500); // Post-password delay
 
-    const handleVisibilityChange = () => {
-      if (document.hidden && playing && soundInstance) {
-        soundInstance.pause();
-        setPlaying(false);
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      soundInstance?.unload();
-      soundInstance = null;
+      clearTimeout(timeout);
     };
   }, [createSound]);
 
