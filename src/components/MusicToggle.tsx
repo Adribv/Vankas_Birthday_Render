@@ -26,7 +26,7 @@ export default function MusicToggle() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       createSound();
-    }, 500); // Post-password delay
+    }, 300); // Post-password delay
 
     return () => {
       clearTimeout(timeout);
