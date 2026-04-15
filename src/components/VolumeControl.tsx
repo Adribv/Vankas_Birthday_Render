@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Volume2, Volume1, VolumeX } from 'lucide-react';
-import { setMusicVolume } from './MusicToggle';
+// import { setMusicVolume } from './MusicToggle';
 
 export default function VolumeControl() {
   const [volume, setVolume] = useState(0.15);
   const [showSlider, setShowSlider] = useState(false);
 
   useEffect(() => {
-    setMusicVolume(volume);
+    if (typeof window !== 'undefined') {
+      (window as any).setMusicVolume(volume);
+    }
   }, [volume]);
 
   return (

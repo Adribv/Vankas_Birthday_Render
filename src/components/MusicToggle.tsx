@@ -5,7 +5,7 @@ import { Howl } from "howler";
 let soundInstance: Howl | null = null;
 
 export default function MusicToggle() {
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
 
   const createSound = useCallback(() => {
     if (soundInstance) {
@@ -35,11 +35,7 @@ export default function MusicToggle() {
 
   const toggle = useCallback(() => {
     if (soundInstance) {
-      if (playing) {
-        soundInstance.pause();
-      } else {
-        soundInstance.play();
-      }
+      soundInstance.play();
       setPlaying(!playing);
     }
   }, [playing]);
@@ -52,13 +48,13 @@ export default function MusicToggle() {
       whileTap={{ scale: 0.9 }}
       aria-label="Toggle music"
     >
-      {playing ? "🎵" : "🔇"}
+🎵
     </motion.button>
   );
 }
 
 // Global volume setter for other components
-export const setMusicVolume = (vol: number) => {
+(window as any).setMusicVolume = (vol: number) => {
   if (soundInstance) {
     soundInstance.volume(vol);
   }
