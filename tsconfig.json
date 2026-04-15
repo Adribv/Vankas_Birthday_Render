@@ -5,12 +5,11 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
     "skipLibCheck": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "types": ["node"]
   },
   "files": [],
   "references": [
@@ -22,3 +21,4 @@
     }
   ]
 }
+

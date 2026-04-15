@@ -4,6 +4,12 @@ import { Howl } from "howler";
 
 let soundInstance: Howl | null = null;
 
+declare global {
+  interface Window {
+    setMusicVolume: (vol: number) => void;
+  }
+}
+
 export default function MusicToggle() {
   const [playing, setPlaying] = useState(true);
 
@@ -54,7 +60,7 @@ export default function MusicToggle() {
 }
 
 // Global volume setter for other components
-(window as any).setMusicVolume = (vol: number) => {
+window.setMusicVolume = (vol: number) => {
   if (soundInstance) {
     soundInstance.volume(vol);
   }

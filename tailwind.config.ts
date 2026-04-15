@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -13,11 +14,10 @@ export default {
       },
     },
     extend: {
-        fontFamily: {
-          display: ['"Reenie Beanie"', '"Dancing Script"', 'cursive'],
-          body: ['"Quicksand"', '"Comfortaa"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        },
-
+      fontFamily: {
+        display: ['"Reenie Beanie"', '"Dancing Script"', 'cursive'],
+        body: ['"Quicksand"', '"Comfortaa"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -157,5 +157,6 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
+
