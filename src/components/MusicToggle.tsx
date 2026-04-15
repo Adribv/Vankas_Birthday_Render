@@ -7,7 +7,7 @@ export default function MusicToggle() {
 
   useEffect(() => {
   audioRef.current = new Audio("/a.mp3");
-    (window as any).musicAudio = audioRef.current; // Share for volume control
+(window as any).musicAudio = audioRef.current!; // Share for volume control
     audioRef.current.loop = true;
     audioRef.current.volume = 0.15;
     audioRef.current.play().catch(e => console.log('Autoplay failed:', e));

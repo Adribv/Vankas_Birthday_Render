@@ -11,7 +11,7 @@ export default function VolumeControl() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const audio = (window as any).musicAudio as HTMLAudioElement;
+      const audio = (window as any).musicAudio as HTMLAudioElement | null;
       if (audio) {
         audio.volume = volume;
       }
