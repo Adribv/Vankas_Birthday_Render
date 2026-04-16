@@ -9,7 +9,7 @@ declare global {
 }
 
 export default function VolumeControl() {
-  const [volume, setVolume] = useState(0.17);
+  const [volume, setVolume] = useState(0.42);
   const [showSlider, setShowSlider] = useState(false);
 
   useEffect(() => {

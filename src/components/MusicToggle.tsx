@@ -20,7 +20,7 @@ export default function MusicToggle() {
     soundInstance = new Howl({
       src: ['/a.mp3'],
       loop: true,
-      volume: 0.17,
+      volume: 0.42,
       html5: true,
       preload: true
     });
