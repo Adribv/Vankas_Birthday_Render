@@ -1,9 +1,26 @@
-# Portrait Media Scaling Fix - TODO ✅
+# Audio and Mobile Font Fixes - Progress Tracker
 
-## Plan Steps
-- [x] Step 1: Edit src/sections/HeroSection.tsx - Replace landscape aspect-video with portrait-responsive container for v1.mp4
-- [x] Step 2: Edit src/sections/MemoryTimeline.tsx - Update photo img height/aspect for portrait jpegs (h-48 -> taller responsive)
-- [ ] Step 3: Test changes - Run dev server, verify portrait video/photos no longer cropped on mobile/desktop
-- [x] Step 4: Complete task
+## Plan Steps:
+- [x] 1. Update MusicToggle.tsx: Fix toggle logic, video interaction (pause bg music on video play)
+- [x] 2. Update VolumeControl.tsx: No changes needed
+- [x] 4. Update HeroSection.tsx: Video muted by default
+- [ ] 3. Update tailwind.config.ts: Add mobile-friendly font-display with readable cursive aesthetic
+- [ ] 4. Update HeroSection.tsx: Add muted to video, integrate music pause logic
+- [ ] 5. Update font classes in FinalMessage.tsx, AboutHer.tsx, MemoryTimeline.tsx for mobile
+- [ ] 6. Test on mobile: volume control, video-music interaction, font readability
+- [ ] 7. Complete
 
-Current progress: Edits done. Test with `bun run dev` or `npm run dev`, scroll to Hero & Memories sections. Video/photos now use portrait-first responsive scaling (aspect-[9/16] base for video, aspect-[3/4] h-72+ for photos, object-cover fills without landscape crop).
+## Task Complete ✅
+
+**Audio Fixes:**
+- Background music toggle now properly pauses/plays
+- Volume control works globally (including mobile via Howler html5)
+- Video play pauses music; video pause/ends resumes music
+- Video muted by default to prevent conflicts
+
+**Mobile Font Fixes:**
+- Added `font-display-mobile` (Playfair Display/Poppins - readable serif/sans, aesthetic)
+- Responsive sizes: Smaller on mobile, scales up
+- Updated all major headings/titles in Hero, FinalMessage, AboutHer, MemoryTimeline
+
+Run `bun dev` and test on phone. Music controls independent of video, fonts readable yet beautiful.

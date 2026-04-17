@@ -25,7 +25,7 @@ src={memory.image}
             />
           </div>
           <div className="p-5">
-            <h3 className="font-display text-xl text-foreground mb-1">{memory.title}</h3>
+            <h3 className="font-display-mobile md:font-display text-lg sm:text-xl text-foreground mb-1">{memory.title}</h3>
             <p className="font-body text-muted-foreground text-sm">{memory.description}</p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function MemoryTimeline() {
       ))}
 
       <motion.h2
-        className="font-display text-3xl md:text-5xl text-center text-foreground mb-16"
+        className="font-display-mobile md:font-display text-2xl sm:text-3xl md:text-5xl text-center text-foreground mb-16"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

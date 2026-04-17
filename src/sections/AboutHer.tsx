@@ -55,7 +55,7 @@ export default function AboutHer() {
       </div>
 
       <motion.h2
-        className="font-display text-3xl md:text-5xl text-center text-foreground mb-4 relative z-10"
+        className="font-display-mobile md:font-display text-2xl sm:text-3xl md:text-5xl text-center text-foreground mb-4 relative z-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

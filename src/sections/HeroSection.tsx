@@ -90,7 +90,7 @@ export default function HeroSection() {
           🎂
         </motion.div>
 
-        <h1 className="font-display text-3xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-8 min-h-[4rem]">
+        <h1 className="font-display-mobile md:font-display text-xl sm:text-2xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-8 min-h-[4rem]">
           {text}
           <motion.span
             className="inline-block w-0.5 h-8 bg-sunflower ml-1 align-middle"
@@ -116,7 +116,7 @@ className="relative z-10 mt-12 w-80 md:w-96 lg:w-[28rem] h-60 md:h-72 lg:h-80 mx
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <video className="w-full h-full object-contain" controls poster="/favicon.ico">
+          <video className="w-full h-full object-contain" controls muted poster="/favicon.ico">
             <source src="/v1.mp4" type="video/mp4" />
           </video>
         </motion.div>

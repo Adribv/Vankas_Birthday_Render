@@ -39,9 +39,47 @@ export default function MusicToggle() {
     };
   }, [createSound]);
 
-  const toggle = useCallback(() => {
+  // Pause/resume music when video plays/pauses
+  useEffect(() => {
+    const handleVideoEvents = () => {
+      const video = document.querySelector('video') as HTMLVideoElement | null;
+      if (!video || !soundInstance) return () => {};
+
+      const pauseMusic = () => {
+        soundInstance.pause();
+      };
+
+      const resumeMusic = () => {
+        if (playing) {
+          soundInstance.play();
+        }
+      };
+
+      video.addEventListener('play', pauseMusic);
+      video.addEventListener('pause', resumeMusic);
+      video.addEventListener('ended', resumeMusic);
+      video.addEventListener('loadedmetadata', () => {
+        video.muted = true; // Ensure video muted by default
+      });
+
+      return () => {
+        video.removeEventListener('play', pauseMusic);
+        video.removeEventListener('pause', resumeMusic);
+        video.removeEventListener('ended', resumeMusic);
+        video.removeEventListener('loadedmetadata', () => {});
+      };
+    };
+
+    return handleVideoEvents();
+  }, [playing]);
+
+const toggle = useCallback(() => {
     if (soundInstance) {
-      soundInstance.play();
+      if (playing) {
+        soundInstance.pause();
+      } else {
+        soundInstance.play();
+      }
       setPlaying(!playing);
     }
   }, [playing]);

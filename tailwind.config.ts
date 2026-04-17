@@ -15,7 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Reenie Beanie"', '"Dancing Script"', 'cursive'],
+        display: ['"Reenie Beanie"', '"Dancing Script"', '"Playfair Display"', '"Poppins"', 'serif'],
+        'display-mobile': ['"Playfair Display"', '"Poppins"', 'Inter', 'ui-sans-serif', 'sans-serif'],
         body: ['"Quicksand"', '"Comfortaa"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       colors: {

@@ -83,7 +83,7 @@ export default function FinalMessage() {
           💛
         </motion.div>
 
-        <p className="font-display text-2xl md:text-4xl lg:text-5xl leading-relaxed text-foreground min-h-[8rem]">
+        <p className="font-display-mobile md:font-display text-lg sm:text-xl md:text-4xl lg:text-5xl leading-relaxed text-foreground min-h-[8rem]">
           {text}
           {text.length < finalMessage.length && (
             <motion.span
