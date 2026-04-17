@@ -40,7 +40,7 @@ export const aboutHerTraits = [
   { emoji: "💼", text: "Boss lady energy" },
   { emoji: "🌻", text: "Sunflower soul" },
   { emoji: "🍉", text: "White Watermelon lover" },
-  { emoji: "🌯", text: "California burrito fan" },
+{ emoji: "🍚", text: "California burrito fan" },
   { emoji: "🍟", text: "Potato Chips always" },
   { emoji: "✈️", text: "Wanderlust heart" },
   { emoji: "📚", text: "Bookoholicc" },
@@ -75,4 +75,4 @@ export const coffeePersonality = [
   { type: "Mocha", trait: "A little sweet, a lot of character", icon: "🍫" },
 ];
 
-export const finalMessage ="Even the quietest dreams in you deserve the loudest sky 💛 Siragu Adi Molaee 💃💃💃💃💃and let yourself shine bright 🌙 Happy Birthday, Vankaww🌻 Welcome to 21🌻";
+export const finalMessage ="Even the quietest dreams in you deserve the loudest sky 💛💛 Siragu Adi Molaee 💃💃💃💃💃 and let yourself shine bright 🌙 Happy Birthday, Vankaww🌻 Welcome to 21🌻";

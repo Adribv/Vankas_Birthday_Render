@@ -9,7 +9,7 @@ declare global {
 }
 
 export default function VolumeControl() {
-  const [volume, setVolume] = useState(0.42);
+  const [volume, setVolume] = useState(0.3); // Lower default for mobile
   const [showSlider, setShowSlider] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function VolumeControl() {
   }, [volume]);
 
   return (
-    <div className="fixed top-6 right-4 z-[100] flex items-center gap-1 bg-card/95 backdrop-blur-md rounded-lg p-2 shadow-xl border border-border/50">
+    <div className="fixed top-4 right-4 sm:top-6 z-[100] flex flex-col items-end gap-1 bg-card/95 backdrop-blur-md rounded-lg p-2.5 shadow-xl border border-border/50 sm:flex-row">
       <motion.button
         className="p-1.5 rounded-md hover:bg-accent transition-colors"
         whileHover={{ scale: 1.05 }}
