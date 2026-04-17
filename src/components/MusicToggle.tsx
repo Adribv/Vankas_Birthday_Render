@@ -40,38 +40,39 @@ export default function MusicToggle() {
     };
   }, [createSound]);
 
-  // Pause/resume music when video plays/pauses
+  // Pause/resume music when video plays/pauses - Multiple videos support
   useEffect(() => {
-    const handleVideoEvents = () => {
-      const video = document.querySelector('video') as HTMLVideoElement | null;
-      if (!video || !soundInstance) return () => {};
-
-      const pauseMusic = () => {
-        soundInstance.pause();
-      };
-
-      const resumeMusic = () => {
-        soundInstance.play();
-      };
-
-      video.addEventListener('play', pauseMusic);
-      video.addEventListener('pause', resumeMusic);
-      video.addEventListener('ended', resumeMusic);
-      video.addEventListener('waiting', pauseMusic); // Pause during buffering
-      video.addEventListener('canplay', resumeMusic); // Resume when can play
-      // video.addEventListener('loadedmetadata', () => {
-        // video.muted = true; // User controls volume now
-      // });
-
-      return () => {
-        video.removeEventListener('play', pauseMusic);
-        video.removeEventListener('pause', resumeMusic);
-        video.removeEventListener('ended', resumeMusic);
-        video.removeEventListener('loadedmetadata', () => {});
-      };
+    const pauseMusic = () => {
+      if (soundInstance) soundInstance.pause();
     };
 
-    return handleVideoEvents();
+    const resumeMusic = () => {
+      if (soundInstance) soundInstance.play();
+    };
+
+    const handleVideoPlay = (e: Event) => {
+      const video = e.target as HTMLVideoElement;
+      if (video && soundInstance) {
+        soundInstance.pause();
+      }
+    };
+
+    const handleVideoPauseEnd = (e: Event) => {
+      const video = e.target as HTMLVideoElement;
+      if (video && soundInstance && playing) {
+        soundInstance.play();
+      }
+    };
+
+    document.addEventListener('play', handleVideoPlay, true);
+    document.addEventListener('pause', handleVideoPauseEnd, true);
+    document.addEventListener('ended', handleVideoPauseEnd, true);
+
+    return () => {
+      document.removeEventListener('play', handleVideoPlay, true);
+      document.removeEventListener('pause', handleVideoPauseEnd, true);
+      document.removeEventListener('ended', handleVideoPauseEnd, true);
+    };
   }, [playing]);
 
 const toggle = useCallback(() => {
