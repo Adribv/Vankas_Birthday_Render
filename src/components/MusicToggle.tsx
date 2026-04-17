@@ -22,7 +22,8 @@ export default function MusicToggle() {
       loop: true,
       volume: 0.3,
       html5: true,
-      preload: true
+      preload: true,
+      xhrWithCredentials: false
     });
     soundInstance.play();
     setPlaying(true);
@@ -58,9 +59,9 @@ export default function MusicToggle() {
       video.addEventListener('ended', resumeMusic);
       video.addEventListener('waiting', pauseMusic); // Pause during buffering
       video.addEventListener('canplay', resumeMusic); // Resume when can play
-      video.addEventListener('loadedmetadata', () => {
-        video.muted = true; // Ensure video muted by default
-      });
+      // video.addEventListener('loadedmetadata', () => {
+        // video.muted = true; // User controls volume now
+      // });
 
       return () => {
         video.removeEventListener('play', pauseMusic);
