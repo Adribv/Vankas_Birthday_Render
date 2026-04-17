@@ -50,14 +50,14 @@ export default function MusicToggle() {
       };
 
       const resumeMusic = () => {
-        if (playing) {
-          soundInstance.play();
-        }
+        soundInstance.play();
       };
 
       video.addEventListener('play', pauseMusic);
       video.addEventListener('pause', resumeMusic);
       video.addEventListener('ended', resumeMusic);
+      video.addEventListener('waiting', pauseMusic); // Pause during buffering
+      video.addEventListener('canplay', resumeMusic); // Resume when can play
       video.addEventListener('loadedmetadata', () => {
         video.muted = true; // Ensure video muted by default
       });
