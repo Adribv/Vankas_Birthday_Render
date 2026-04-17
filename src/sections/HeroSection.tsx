@@ -6,7 +6,6 @@ const fullMessage = "Happy Birthday to the Sweetest One 💛🌻";
 
 export default function HeroSection() {
   const [text, setText] = useState("");
-  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     let i = 0;
@@ -15,7 +14,6 @@ export default function HeroSection() {
       i++;
       if (i >= fullMessage.length) {
         clearInterval(interval);
-        setTimeout(() => setShowVideo(true), 800);
       }
     }, 60);
     return () => clearInterval(interval);
@@ -109,18 +107,7 @@ export default function HeroSection() {
         </motion.p>
       </motion.div>
 
-      {showVideo && (
-        <motion.div
-className="relative z-10 mt-12 w-80 md:w-96 lg:w-[28rem] h-60 md:h-72 lg:h-80 mx-auto rounded-2xl overflow-hidden glass shadow-xl flex-shrink-0"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
-          <video className="w-full h-full object-contain" controls muted poster="/favicon.ico">
-            <source src="/v1.mp4" type="video/mp4" />
-          </video>
-        </motion.div>
-      )}
+      {/* No video here anymore */}
 
       {/* Scroll indicator */}
       <motion.div

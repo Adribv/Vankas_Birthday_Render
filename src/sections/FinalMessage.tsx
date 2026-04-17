@@ -102,6 +102,20 @@ export default function FinalMessage() {
         >
           With all our love 🌻☕✈️🍫🍉
         </motion.p>
+
+        {/* Video in final section */}
+        <motion.div
+          className="mt-16 w-full max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 10 }}
+        >
+          <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl">
+            <video className="w-full h-64 md:h-80 lg:h-96 object-contain" controls muted poster="/favicon.ico">
+              <source src="/v1.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
